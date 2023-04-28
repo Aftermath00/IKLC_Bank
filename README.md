@@ -17,6 +17,9 @@ My bank application command line interface is a simple tool for managing finance
 - Check Balance (Checked)
 - Transaction History (Checked)
 
+## Shortages:
+- Can't clear terminal for each menu
+
 ## Personal Information
 - Name        : Rizky Azmi Swandy
 - Student ID  : 211401051
