@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Main {
-    ArrayList<Account> accountList;
     public static void main(String[] args){
         DBConnector.initDBConnection();
         Scanner sc= new Scanner(System.in);
@@ -104,32 +103,31 @@ public class Main {
                 System.out.println();
                 System.out.print("Account Number : ");
                 int customer_account = sc.nextInt();
-                System.out.print("Transfer amount : ");
                 double transfer_amount = 0.0;
                 boolean validInput = false;
 
-                while (!validInput) {
-                    try {
-                        System.out.print("Transfer amount : ");
-                        transfer_amount = sc.nextDouble();
-                        validInput = true;
-                    } catch (java.util.InputMismatchException e) {
-                        System.out.println("Invalid input. Please enter a valid number.");
-                        sc.next();
+                    while (!validInput) {
+                        try {
+                            System.out.print("Transfer amount : ");
+                            transfer_amount = sc.nextDouble();
+                            validInput = true;
+                        } catch (java.util.InputMismatchException e) {
+                            System.out.println("Invalid input. Please enter a valid number.");
+                            sc.next();
+                        }
                     }
-                }
 
                 boolean customerFound = false;
 
-                for (Account account : Account.accountList) {
-                    if (account.accountNumber == customer_account) {
-                        customerFound = true;
-                        pay.pay(customer_account, transfer_amount);
+                    for (Account account : Account.accountList) {
+                        if (account.accountNumber == customer_account) {
+                            customerFound = true;
+                            pay.pay(customer_account, transfer_amount);
+                        }
                     }
-                }
-                if (!customerFound) {
-                    System.out.println("Account not found.");
-                }
+                    if (!customerFound) {
+                        System.out.println("Account not found.");
+                    }
             }
             case 4 -> {
                 Account.loadAccount();
@@ -141,20 +139,31 @@ public class Main {
                 System.out.println();
                 System.out.print("Account Number : ");
                 int customer_account = sc.nextInt();
-                System.out.print("Withdraw amount : ");
-                double withdraw_amount = sc.nextDouble();
+                double withdraw_amount = 0.0;
+                boolean validInput = false;
+
+                while (!validInput) {
+                    try {
+                        System.out.print("Withdraw amount : ");
+                        withdraw_amount = sc.nextDouble();
+                        validInput = true;
+                    } catch (java.util.InputMismatchException e) {
+                        System.out.println("Invalid input. Please enter a valid number.");
+                        sc.next();
+                    }
+                }
 
                 boolean customerFound = false;
 
-                for (Account account : Account.accountList) {
-                    if (account.accountNumber == customer_account) {
-                        customerFound = true;
-                        withdraw.withdraw(customer_account, withdraw_amount);
+                    for (Account account : Account.accountList) {
+                        if (account.accountNumber == customer_account) {
+                            customerFound = true;
+                            withdraw.withdraw(customer_account, withdraw_amount);
+                        }
                     }
-                }
-                if (!customerFound) {
-                    System.out.println("Account not found.");
-                }
+                    if (!customerFound) {
+                        System.out.println("Account not found.");
+                    }
             }
             case 5 -> {
                 Account.loadAccount();
