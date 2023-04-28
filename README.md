@@ -1,5 +1,4 @@
-# IKLC Bank Application
-##### Command-Line Interface Based Application
+# IKLC Bank Application (CLI Based Application)
 
 ## Information
 - Youtube Link : 
